@@ -113,12 +113,13 @@
 
         // sum all incomes and expenses
         for(var index in objects){
+          objects[index].attributes.value = parseFloat(objects[index].attributes.value)/100;
           if(objects[index].attributes.change_type === "expense"){
-            $rootScope.overview.expenses += parseFloat(objects[index].attributes.value);
+            $rootScope.overview.expenses += objects[index].attributes.value;
             $rootScope.expenses.push(objects[index]);
           }
           else{
-            $rootScope.overview.incomes += parseFloat(objects[index].attributes.value);
+            $rootScope.overview.incomes += objects[index].attributes.value;
             $rootScope.incomes.push(objects[index]);
           }
         }
