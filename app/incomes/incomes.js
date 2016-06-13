@@ -54,6 +54,7 @@ angular.module('App')
         };
 
         newIncome.$save(function(response){
+          $rootScope.$broadcast('UPDATE');
           $state.go('incomes');
         });
       };
@@ -71,6 +72,7 @@ angular.module('App')
         };
 
         newIncome.$save(function(response){
+          $rootScope.$broadcast('UPDATE');
           $state.go('expenses');
         });
       };
@@ -78,7 +80,7 @@ angular.module('App')
       $scope.delete = function(id){
         console.log(id);
         DeleteChanges.delete({id: id}, function(response){
-          console.log(response);
+          $rootScope.$broadcast('UPDATE');
         });
       };
 

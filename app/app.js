@@ -138,7 +138,10 @@
     // ifm month changes, updates values
     $rootScope.$watch('month', function() {
         $rootScope.$broadcast('UPDATE');
-        updateData();
+    });
+
+    $rootScope.$on('UPDATE', function(){
+      updateData();
     });
 
 
