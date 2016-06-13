@@ -35,6 +35,7 @@
     <meta name="description" content="">
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="theme/css/AdminLTE.min.css">
     <link rel="stylesheet" href="theme/css/skins/skin-green.min.css">
@@ -58,10 +59,10 @@
       <!-- Header Navbar -->
       <nav class="navbar navbar-static-top" role="navigation">
         <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav date">
-            <button type="button" class="button btn-lg col-1" ng-click="previousMonth()"><i class="fa fa-caret-left" ></i></button>
-            <span>{{monthNames[month]}} {{year}}</span>
-            <button type="button" name="button" ng-click="nextMonth()"><i class="fa fa-caret-right" ></i></button>
+          <ul class="nav navbar-nav margin-top-10">
+            <button type="button" class="btn btn-sm btn-secondary col-1" ng-click="previousMonth()"><i class="fa fa-caret-left" ></i></button>
+            <b class="months">{{monthNames[month]}} {{year}}</b>
+            <button type="button" class="btn btn-sm btn-secondary col-1" ng-click="nextMonth()"><i class="fa fa-caret-right" ></i></button>
 
           </ul>
         </div>
@@ -115,6 +116,7 @@
   <script src="node_modules/moment/moment.js"></script>
 
   <script src="app/app.js"></script>
+  <script src="app/services.js"></script>
   <script src="app/home/index.js"></script>
   <script src="app/overview/overview.js"></script>
   <script src="app/expenses/expenses.js"></script>

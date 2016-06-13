@@ -5,7 +5,8 @@
     .module('App', [
       'ui.router',
       'ngResource',
-      'Models'
+      'Models',
+      'Services'
     ])
     .config(AppConfig)
     .run(App);
@@ -122,5 +123,8 @@
         $rootScope.$broadcast('UPDATE');
         console.log('month updates');
     });
+
+
+
   }
 })();
