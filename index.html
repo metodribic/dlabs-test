@@ -88,10 +88,10 @@
           <li class="header">Welcome to tosh killer</li>
           <li><a ui-sref="overview" class="noUnderline"><i class="fa fa-usd"></i>
             <!-- if diff is positive display left else diplay number in red -->
-            <span>Overview: <b ng-class="{'err': diff<0}">${{diff.toFixed(2)}}</b></span> <span ng-show="diff >= 0">left</span>
+            <span>Overview: <b ng-class="{'err': diff<0}">${{diff | number:2}}</b></span> <span ng-show="diff >= 0">left</span>
           </a></li>
-          <li><a ui-sref="expenses" class="noUnderline"><i class="fa fa-minus"></i> <span>Expenses: <b>${{overview.expenses.toFixed(2)}}</b></span></a></li>
-          <li><a ui-sref="incomes" class="noUnderline"><i class="fa fa-plus"></i> <span>Incomes: <b>${{overview.incomes.toFixed(2)}}</b></span></a></li>
+          <li><a ui-sref="expenses" class="noUnderline"><i class="fa fa-minus"></i> <span>Expenses: <b>${{overview.expenses | number:2}}</b></span></a></li>
+          <li><a ui-sref="incomes" class="noUnderline"><i class="fa fa-plus"></i> <span>Incomes: <b>${{overview.incomes | number:2}}</b></span></a></li>
 
         </ul>
         <!-- /.sidebar-menu -->

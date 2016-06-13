@@ -48,7 +48,7 @@
               controller: 'IncomesCtrl'
           });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/overview');
   }
 
   function App($rootScope, BalanceChanges) {
