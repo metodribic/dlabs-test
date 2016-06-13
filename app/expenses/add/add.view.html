@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<div class="box">
+  <div class="box-header with-border">
+    <h1 class="box-title"><b>Add new expense</b></h1>
+  </div>
+  <div class="box-body">
+    <form class="" method="post" ng-submit="saveExpense()">
+      Day:&nbsp;
+
+      <select ng-options="day as day.label for day in days" ng-model="selected"></select>
+
+      <input type="number" step="0.01" name="name" value="" ng-model="inputValue"> $
+      <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-plus">&nbsp;</i>Save</button>
+    </form>
+
+  </div>
+</div>

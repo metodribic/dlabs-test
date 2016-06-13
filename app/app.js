@@ -31,8 +31,7 @@
 
           .state('expenses', {
               url: '/expenses',
-              templateUrl: 'app/expenses/expenses.view.html',
-              controller: 'ExpensesCtrl'
+              templateUrl: 'app/expenses/expenses.view.html'
           })
 
           .state('incomes', {
@@ -43,6 +42,12 @@
           .state('addIncomes', {
               url: '/incomes/new',
               templateUrl: 'app/incomes/add/add.view.html',
+              controller: 'IncomesCtrl'
+          })
+
+          .state('addExpense', {
+              url: '/expenses/new',
+              templateUrl: 'app/expenses/add/add.view.html',
               controller: 'IncomesCtrl'
           });
 

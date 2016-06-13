@@ -54,17 +54,26 @@ angular.module('App')
         };
 
         newIncome.$save(function(response){
-          console.log(response);
+          $state.go('incomes');
         });
       };
+
+
+      $scope.saveExpense = function(){
+        var newIncome = new BalanceChanges();
+        var atributes = {
+          'value': $scope.inputValue,
+          'change_type': 'expense',
+          'entry_date':$rootScope.year+''+leadingZeroMonth()+''+$scope.selected.value
+        };
+        newIncome.data = {
+            "attributes": atributes
+        };
+
+        newIncome.$save(function(response){
+          $state.go('expenses');
+        });
+      };
+
+
     }]);
-
-
-    // POST api/v1/balance_changes
-
-    //   "data":{
-    //   "attributes":{
-    //   "value":100,
-    //   "change_type":"expense",
-    //   "entry_date":"2016­03­08"
-    // }
