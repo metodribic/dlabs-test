@@ -17,11 +17,6 @@
   function AppConfig($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-          .state('home', {
-              url: '/',
-              templateUrl: 'app/home/home.view.html',
-              controller: 'IndexCtrl'
-          })
 
           .state('overview', {
               url: '/overview',
@@ -147,8 +142,8 @@
     });
 
     // GET array of days for current month - needed for dropdown
-    // fill $scope,days with days in month
-    // needed for dropdown
+    // TODO: use moment.js for this
+
     function getDays(){
       $rootScope.days = [];
       var daysOfMonth = new Date($rootScope.year, $rootScope.month+1, 0).getDate();
@@ -178,9 +173,7 @@
         }
         $rootScope.days.push(obj);
       }
-      console.log($rootScope.days);
     }
-
 
 
   }

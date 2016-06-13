@@ -16,6 +16,10 @@ a.noUnderline {
 
 .months {
   color: white;
+  min-width: 120px;
+  width:120px; /* or whatever width you want. */
+  max-width:120px; /* or whatever width you want. */
+  display: inline-block;
 }
 
 .navbar {

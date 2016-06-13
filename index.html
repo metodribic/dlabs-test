@@ -58,11 +58,14 @@
 
       <!-- Header Navbar -->
       <nav class="navbar navbar-static-top" role="navigation">
+        <!-- <a target="_self" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a> -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav margin-top-10">
-            <button type="button" class="btn btn-sm btn-secondary col-1" ng-click="previousMonth()"><i class="fa fa-caret-left" ></i></button>
-            <b class="months">{{monthNames[month]}} {{year}}</b>
-            <button type="button" class="btn btn-sm btn-secondary col-1" ng-click="nextMonth()"><i class="fa fa-caret-right" ></i></button>
+            <button type="button" class="btn btn-sm btn-secondary" ng-click="previousMonth()"><i class="fa fa-caret-left" ></i></button>
+            <span class="months text-center"><b>{{monthNames[month]}} {{year}}</b></span>
+            <button type="button" class="btn btn-sm btn-secondary" ng-click="nextMonth()"><i class="fa fa-caret-right" ></i></button>
 
           </ul>
         </div>
