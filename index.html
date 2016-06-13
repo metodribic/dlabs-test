@@ -82,9 +82,12 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
           <li class="header">Welcome to tosh killer</li>
-          <li><a ui-sref="overview" class="noUnderline"><i class="fa fa-usd"></i> <span>Overview: <b>$5656.2</b> left</span></a></li>
-          <li><a ui-sref="expenses" class="noUnderline"><i class="fa fa-minus"></i> <span>Expenses: <b>$200.2</b> left</span></a></li>
-          <li><a ui-sref="incomes" class="noUnderline"><i class="fa fa-plus"></i> <span>Incomes: <b>$322.2</b> left</span></a></li>
+          <li><a ui-sref="overview" class="noUnderline"><i class="fa fa-usd"></i>
+            <!-- if diff is positive display left else diplay number in red -->
+            <span>Overview: <b ng-class="{'err': diff<0}">${{diff}}</b></span> <span ng-show="diff >= 0">left</span>
+          </a></li>
+          <li><a ui-sref="expenses" class="noUnderline"><i class="fa fa-minus"></i> <span>Expenses: <b>${{overview.expenses}}</b></span></a></li>
+          <li><a ui-sref="incomes" class="noUnderline"><i class="fa fa-plus"></i> <span>Incomes: <b>${{overview.incomes}}</b></span></a></li>
 
         </ul>
         <!-- /.sidebar-menu -->
@@ -107,6 +110,7 @@
   </div>
   <!-- ./wrapper -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
   <script src="node_modules/moment/moment.js"></script>
 
@@ -115,5 +119,6 @@
   <script src="app/overview/overview.js"></script>
   <script src="app/expenses/expenses.js"></script>
   <script src="app/incomes/incomes.js"></script>
+  <script src="app/models/models.js"></script>
 
 </body></html>

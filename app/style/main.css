@@ -9,3 +9,7 @@ a.noUnderline {
 .date{
   margin-top: 20px;
 }
+
+.err{
+  color: red;
+}
