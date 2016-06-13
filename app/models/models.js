@@ -5,15 +5,15 @@ angular.module('Models', ['ngResource'])
 .factory('BalanceChanges', function($resource, API_URL) {
 	return $resource(API_URL + '/balance_changes?:filter',{filter : '@filter'}, {
 		update: {
-			method: 'PATCH'
+			method: 'PUT'
 		}
 	});
 })
 
-.factory('DeleteChanges', function($resource, API_URL) {
+.factory('UpdateChanges', function($resource, API_URL) {
 	return $resource(API_URL + '/balance_changes/:id',{id : '@id'}, {
 		update: {
-			method: 'PATCH'
+			method: 'PUT'
 		}
 	});
 })

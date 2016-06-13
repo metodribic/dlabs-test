@@ -1,8 +1,9 @@
 angular.module('App')
-  .controller('IncomesCtrl', ['$scope','$rootScope','$state','BalanceChanges', 'DeleteChanges', function ($scope,$rootScope, $state, BalanceChanges, DeleteChanges) {
+  .controller('IncomesCtrl', ['$scope','$rootScope','$state','BalanceChanges', 'UpdateChanges', function ($scope,$rootScope, $state, BalanceChanges, UpdateChanges) {
       var daysOfMonth = new Date($rootScope.year, $rootScope.month+1, 0).getDate();
       $scope.days = [];
       $scope.inputValue;
+      $scope.enableUpdate = false;
       getDays();
       function getDays(){
         var obj = {};
@@ -39,7 +40,7 @@ angular.module('App')
         return tmp.substring($rootScope.month.length-3, $rootScope.month.length);
       }
 
-
+      console.log($rootScope.day-1);
       $scope.selected = $scope.days[$rootScope.day-1];
 
       $scope.saveIncome = function(){
@@ -47,7 +48,7 @@ angular.module('App')
         var atributes = {
           'value': $scope.inputValue,
           'change_type': 'income',
-          'entry_date':$rootScope.year+''+leadingZeroMonth()+''+$scope.selected.value
+          'entry_date':$rootScope.year+'-'+leadingZeroMonth()+'-'+$scope.selected.value
         };
         newIncome.data = {
             "attributes": atributes
@@ -65,7 +66,7 @@ angular.module('App')
         var atributes = {
           'value': $scope.inputValue,
           'change_type': 'expense',
-          'entry_date':$rootScope.year+''+leadingZeroMonth()+''+$scope.selected.value
+          'entry_date':$rootScope.year+'-'+leadingZeroMonth()+'-'+$scope.selected.value
         };
         newIncome.data = {
             "attributes": atributes
@@ -78,10 +79,66 @@ angular.module('App')
       };
 
       $scope.delete = function(id){
-        console.log(id);
-        DeleteChanges.delete({id: id}, function(response){
+        if (confirm('Are you sure you want delete this entry?')) {
+          UpdateChanges.delete({id: id}, function(response){
+            $rootScope.$broadcast('UPDATE');
+          });
+        }
+      };
+
+      $scope.updateMe = function(id){
+        $scope.updatingObject = id;
+        var tmpDay = id.attributes.entry_date.substring(id.attributes.entry_date.length-2, id.attributes.entry_date.length);
+        $scope.selected = $scope.days[parseInt(tmpDay)-1];
+        $scope.inputValue = parseFloat(id.attributes.value)*100;
+        $scope.enableUpdate = true;
+      };
+
+
+      $scope.cancelUpdate = function(){
+        $scope.enableUpdate = false;
+      };
+
+
+      $scope.updateIncome = function(){
+        $scope.enableUpdate = false;
+
+        var updatedIncome = new UpdateChanges();
+        updatedIncome.id = $scope.updatingObject.id;
+        var atributes = {
+          'value': $scope.inputValue,
+          'change_type': 'income',
+          'entry_date':$rootScope.year+'-'+leadingZeroMonth()+'-'+$scope.selected.value
+        };
+        updatedIncome.data = {
+            "attributes": atributes
+        };
+
+        updatedIncome.$update(function(response){
           $rootScope.$broadcast('UPDATE');
         });
+
+      };
+
+
+      $scope.updateExpanse = function(){
+        $scope.enableUpdate = false;
+
+        var updatedIncome = new UpdateChanges();
+        updatedIncome.id = $scope.updatingObject.id;
+        var atributes = {
+          'value': $scope.inputValue,
+          'change_type': 'expense',
+          'entry_date':$rootScope.year+'-'+leadingZeroMonth()+'-'+$scope.selected.value
+        };
+        updatedIncome.data = {
+            "attributes": atributes
+        };
+
+        updatedIncome.$update(function(response){
+          $rootScope.$broadcast('UPDATE');
+        });
+
       };
 
 

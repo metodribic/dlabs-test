@@ -96,7 +96,6 @@
 
     // FUNCTION FOR UPDATING DATA - NEED TO ADD IT IN SERVICE/FACTORY
     function updateData(){
-      console.log('update data');
       // prepare filter for getting data from api
       var filterArg = 'filter[period]='+$rootScope.year+'-'+leadingZeroMonth();
 
