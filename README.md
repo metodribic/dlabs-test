@@ -6,7 +6,7 @@ Below are the instructions you need to run in the command line to get you starte
 
 ## clone
 ```shell
-git clone git@github.com:dlabs/angular-testday-project.git
+git clone git@github.com:metodribic/dlabs-test.git
 cd angular-testday-project
 ```
 
