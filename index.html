@@ -42,7 +42,7 @@
 
 </head>
 <body class="skin-green sidebar-mini" ng-app="App">
-  <div class="wrapper wrapper-height" ng-controller="IndexCtrl">
+  <div class="wrapper wrapper-height">
 
     <!-- Main Header -->
     <header class="main-header">
@@ -84,7 +84,7 @@
           <li class="header">Welcome to tosh killer</li>
           <li><a ui-sref="overview" class="noUnderline"><i class="fa fa-usd"></i>
             <!-- if diff is positive display left else diplay number in red -->
-            <span>Overview: <b ng-class="{'err': diff<0}">${{diff}}</b></span> <span ng-show="diff >= 0">left</span>
+            <span>Overview: <b ng-class="{'err': diff<0}">${{diff.toFixed(2)}}</b></span> <span ng-show="diff >= 0">left</span>
           </a></li>
           <li><a ui-sref="expenses" class="noUnderline"><i class="fa fa-minus"></i> <span>Expenses: <b>${{overview.expenses}}</b></span></a></li>
           <li><a ui-sref="incomes" class="noUnderline"><i class="fa fa-plus"></i> <span>Incomes: <b>${{overview.incomes}}</b></span></a></li>

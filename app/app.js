@@ -14,10 +14,6 @@
   App.$inject = ['$rootScope', 'BalanceChanges'];
 
   function AppConfig($stateProvider, $urlRouterProvider) {
-    // var homeState = {
-    //   url: '/',
-    //   templateUrl: 'app/home/home.view.html'
-    // };
 
     $stateProvider
           .state('home', {
@@ -92,6 +88,8 @@
       console.log(response);
       // calcalate
       var objects = response.data;
+      $rootScope.expenses = [];
+      $rootScope.incomes = [];
       $rootScope.overview = {
         'incomes': 0,
         'expenses': 0
@@ -99,10 +97,14 @@
 
       // sum all incomes and expenses
       for(var index in objects){
-        if(objects[index].attributes.change_type === "expense")
-          $rootScope.overview.expenses += parseInt(objects[index].attributes.value);
-        else
-          $rootScope.overview.incomes += parseInt(objects[index].attributes.value);
+        if(objects[index].attributes.change_type === "expense"){
+          $rootScope.overview.expenses += parseFloat(objects[index].attributes.value);
+          $rootScope.expenses.push(objects[index]);
+        }
+        else{
+          $rootScope.overview.incomes += parseFloat(objects[index].attributes.value);
+          $rootScope.incomes.push(objects[index]);
+        }
       }
       $rootScope.diff = $rootScope.overview.incomes - $rootScope.overview.expenses;
     });
