@@ -37,7 +37,12 @@
 
           .state('incomes', {
               url: '/incomes',
-              templateUrl: 'app/incomes/incomes.view.html',
+              templateUrl: 'app/incomes/incomes.view.html'
+          })
+
+          .state('addIncomes', {
+              url: '/incomes/new',
+              templateUrl: 'app/incomes/add/add.view.html',
               controller: 'IncomesCtrl'
           });
 
@@ -81,6 +86,7 @@
       $rootScope.month = month;
     };
 
+    // FUNCTION FOR UPDATING DATA - NEED TO ADD IT IN SERVICE/FACTORY
     function updateData(){
       console.log('update data');
       // prepare filter for getting data from api
@@ -116,10 +122,10 @@
 
     // function for adding leading zero if needed - API CONSTRAIN
     function leadingZeroMonth(){
+      // +1 because starting with 0
       var tmp = '0' + ($rootScope.month+1);
       return tmp.substring($rootScope.month.length-3, $rootScope.month.length);
     }
-
 
 
     // ifm month changes, updates values
