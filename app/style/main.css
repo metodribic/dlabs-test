@@ -5,3 +5,7 @@
 a.noUnderline {
     text-decoration: none !important;
 }
+
+.date{
+  margin-top: 20px;
+}

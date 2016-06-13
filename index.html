@@ -42,7 +42,7 @@
 
 </head>
 <body class="skin-green sidebar-mini" ng-app="App">
-  <div class="wrapper wrapper-height">
+  <div class="wrapper wrapper-height" ng-controller="IndexCtrl">
 
     <!-- Main Header -->
     <header class="main-header">
@@ -57,13 +57,19 @@
 
       <!-- Header Navbar -->
       <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav date">
+            <button type="button" class="button btn-lg col-1" ng-click="previousMonth()"><i class="fa fa-caret-left" ></i></button>
+            <span>{{monthNames[month]}} {{year}}</span>
+            <button type="button" name="button" ng-click="nextMonth()"><i class="fa fa-caret-right" ></i></button>
+
+          </ul>
+        </div>
         <!-- Sidebar toggle button-->
-        <button type="button" class="button btn-lg"><i class="fa fa-caret-left"></i></button>
-        <button type="button" name="button">{{month | date:'MM yyyy'}}</button>
-        <button type="button" name="button"><i class="fa fa-caret-right"></i></button>
-        <!-- Navbar Right Menu -->
+          <!-- Navbar Right Menu -->
 
       </nav>
+
     </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
@@ -102,6 +108,8 @@
   <!-- ./wrapper -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+  <script src="node_modules/moment/moment.js"></script>
+
   <script src="app/app.js"></script>
   <script src="app/home/index.js"></script>
   <script src="app/overview/overview.js"></script>

@@ -46,9 +46,41 @@
   }
 
   function App($rootScope) {
-    $rootScope.month = new Date();
-    /**
-     * App logic goes here
-     */
+    var date = new Date();
+    $rootScope.year = date.getFullYear();
+    $rootScope.month = date.getMonth();
+    $rootScope.monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+
+    // get next month
+    $rootScope.previousMonth = function(){
+      var month = $rootScope.month;
+      if(month === 0){
+        $rootScope.year -= 1;
+        month = 11;
+      }
+      else {
+        month = month - 1;
+      }
+      $rootScope.month = month;
+    };
+
+    // get prev month
+    $rootScope.nextMonth = function(){
+      var month = $rootScope.month;
+      if(month === 11){
+        $rootScope.year += 1;
+        month = 0;
+      }
+      else {
+        month = month + 1;
+      }
+      $rootScope.month = month;
+    };
+
+    $rootScope.$watch('month', function() {
+        $rootScope.$broadcast('UPDATE');
+        console.log('month updates');
+    });
   }
 })();
