@@ -55,6 +55,7 @@
     var date = new Date();
     $rootScope.year = date.getFullYear();
     $rootScope.month = date.getMonth();
+    $rootScope.day = date.getDate();
     // initialize month names
     $rootScope.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -94,7 +95,6 @@
 
       // GET data
       BalanceChanges.get({filter: filterArg}).$promise.then(function(response){
-        console.log(response);
         // calcalate
         var objects = response.data;
         $rootScope.expenses = [];

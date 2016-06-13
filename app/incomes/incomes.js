@@ -1,7 +1,8 @@
 angular.module('App')
-  .controller('IncomesCtrl', ['$scope','$rootScope','$state', function ($scope,$rootScope, $state) {
+  .controller('IncomesCtrl', ['$scope','$rootScope','$state','BalanceChanges', function ($scope,$rootScope, $state, BalanceChanges) {
       var daysOfMonth = new Date($rootScope.year, $rootScope.month+1, 0).getDate();
       $scope.days = [];
+      $scope.inputValue;
       getDays();
       function getDays(){
         var obj = {};
@@ -31,6 +32,39 @@ angular.module('App')
           $scope.days.push(obj);
         }
       }
-      $scope.selected = $scope.days[0];
-      console.log($scope.days);
+
+      function leadingZeroMonth(){
+        // +1 because starting with 0
+        var tmp = '0' + ($rootScope.month+1);
+        return tmp.substring($rootScope.month.length-3, $rootScope.month.length);
+      }
+
+
+      $scope.selected = $scope.days[$rootScope.day-1];
+
+      $scope.saveIncome = function(){
+        var newIncome = new BalanceChanges();
+        var atributes = {
+          'value': $scope.inputValue,
+          'change_type': 'income',
+          'entry_date':$rootScope.year+''+leadingZeroMonth()+''+$scope.selected.value
+        };
+        newIncome.data = {
+            "attributes": atributes
+        };
+
+        newIncome.$save(function(response){
+          console.log(response);
+        });
+      };
     }]);
+
+
+    // POST api/v1/balance_changes
+
+    //   "data":{
+    //   "attributes":{
+    //   "value":100,
+    //   "change_type":"expense",
+    //   "entry_date":"2016­03­08"
+    // }
