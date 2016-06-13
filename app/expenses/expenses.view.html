@@ -7,14 +7,20 @@
     <table class="table col-lg-12">
     <thead>
       <tr>
-        <th class="col-sm-6">Date</th>
-        <th class="col-sm-6">Expanse</th>
+        <th class="col-sm-5">Date</th>
+        <th class="col-sm-5">Expanse</th>
+        <th class="col-sm-2">Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="exp in expenses" class="col-lg-12">
-        <td class="col-sm-6">{{exp.attributes.entry_date}}</td>
-        <td class="col-sm-6">{{exp.attributes.value}}</td>
+        <td class="col-sm-5">{{exp.attributes.entry_date}}</td>
+        <td class="col-sm-5">{{exp.attributes.value}}</td>
+        <td class="col-sm-2">
+          <button type="button" class="btn btn-default btn-xs" ng-click="delete(exp.id)" ng-attr-id="{{'brisi'+$index}}">
+            <span class="fa fa-trash" aria-hidden="true"></span> Delete
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

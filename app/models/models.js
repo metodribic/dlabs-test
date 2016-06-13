@@ -8,4 +8,14 @@ angular.module('Models', ['ngResource'])
 			method: 'PATCH'
 		}
 	});
-});
+})
+
+.factory('DeleteChanges', function($resource, API_URL) {
+	return $resource(API_URL + '/balance_changes/:id',{id : '@id'}, {
+		update: {
+			method: 'PATCH'
+		}
+	});
+})
+
+;

@@ -1,5 +1,5 @@
 angular.module('App')
-  .controller('IncomesCtrl', ['$scope','$rootScope','$state','BalanceChanges', function ($scope,$rootScope, $state, BalanceChanges) {
+  .controller('IncomesCtrl', ['$scope','$rootScope','$state','BalanceChanges', 'DeleteChanges', function ($scope,$rootScope, $state, BalanceChanges, DeleteChanges) {
       var daysOfMonth = new Date($rootScope.year, $rootScope.month+1, 0).getDate();
       $scope.days = [];
       $scope.inputValue;
@@ -72,6 +72,13 @@ angular.module('App')
 
         newIncome.$save(function(response){
           $state.go('expenses');
+        });
+      };
+
+      $scope.delete = function(id){
+        console.log(id);
+        DeleteChanges.delete({id: id}, function(response){
+          console.log(response);
         });
       };
 
