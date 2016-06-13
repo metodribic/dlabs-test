@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="App">
+<!-- <html ng-app="App">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,4 +24,88 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
     <script src="app/app.js"></script>
   </body>
-</html>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Toshl killer</title>
+    <meta name="description" content="">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="theme/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="theme/css/skins/skin-green.min.css">
+    <link rel="stylesheet" href="app/style/main.css">
+
+</head>
+<body class="skin-green sidebar-mini" ng-app="App">
+  <div class="wrapper wrapper-height">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>D</b>labs</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>T</b>oshl Killer</span>
+      </a>
+
+      <!-- Header Navbar -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <button type="button" class="button btn-lg"><i class="fa fa-caret-left"></i></button>
+        <button type="button" name="button">{{month | date:'MM yyyy'}}</button>
+        <button type="button" name="button"><i class="fa fa-caret-right"></i></button>
+        <!-- Navbar Right Menu -->
+
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <!-- /.search form -->
+
+        <!-- ########################### Left NAVIGATION ################################ -->
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+          <li class="header">Welcome to tosh killer</li>
+          <li><a ui-sref="overview" class="noUnderline"><i class="fa fa-usd"></i> <span>Overview: <b>$5656.2</b> left</span></a></li>
+          <li><a ui-sref="expenses" class="noUnderline"><i class="fa fa-minus"></i> <span>Expenses: <b>$200.2</b> left</span></a></li>
+          <li><a ui-sref="incomes" class="noUnderline"><i class="fa fa-plus"></i> <span>Incomes: <b>$322.2</b> left</span></a></li>
+
+        </ul>
+        <!-- /.sidebar-menu -->
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <!-- ########################### CONTENT ###########################-->
+        <div ui-view></div>
+        <!-- END CONTENT -->
+      </section>
+      <div style="clear: both"></div>
+    </div>
+    <!-- /.content-wrapper -->
+    <div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>
+  </div>
+  <!-- ./wrapper -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/home/index.js"></script>
+  <script src="app/overview/overview.js"></script>
+  <script src="app/expenses/expenses.js"></script>
+  <script src="app/incomes/incomes.js"></script>
+
+</body></html>
