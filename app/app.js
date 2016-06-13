@@ -96,6 +96,7 @@
 
     // FUNCTION FOR UPDATING DATA - NEED TO ADD IT IN SERVICE/FACTORY
     function updateData(){
+      getDays();
       // prepare filter for getting data from api
       var filterArg = 'filter[period]='+$rootScope.year+'-'+leadingZeroMonth();
 
@@ -135,14 +136,50 @@
     }
 
 
-    // ifm month changes, updates values
+    // if month changes, broadcast for update
     $rootScope.$watch('month', function() {
         $rootScope.$broadcast('UPDATE');
     });
 
+    // event listener for UPDATING
     $rootScope.$on('UPDATE', function(){
       updateData();
     });
+
+    // GET array of days for current month - needed for dropdown
+    // fill $scope,days with days in month
+    // needed for dropdown
+    function getDays(){
+      $rootScope.days = [];
+      var daysOfMonth = new Date($rootScope.year, $rootScope.month+1, 0).getDate();
+      var obj = {};
+      for(var i=1; i<=daysOfMonth; i++){
+        obj = {};
+        switch(i) {
+          case 1:
+            obj.id = 1;
+            obj.value = 1;
+            obj.label = '1st';
+            break;
+          case 2:
+            obj.id = 2;
+            obj.value = 2;
+            obj.label = '2nd';
+            break;
+          case 3:
+            obj.id = 3;
+            obj.value = 3;
+            obj.label = '3rd';
+            break;
+          default:
+            obj.id = i;
+            obj.value = i;
+            obj.label = i+'th';
+        }
+        $rootScope.days.push(obj);
+      }
+      console.log($rootScope.days);
+    }
 
 
 
