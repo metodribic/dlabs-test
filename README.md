@@ -1,23 +1,9 @@
 # D·Labs Angular Test
 
-This is a basic D·Labs Angular skeleton project on which you will prepare the app.
+This project was done as part of test day for junior frontend (AngularJS) developer position at [Dlabs](https://dlabs.si/).
 
-Below are the instructions you need to run in the command line to get you started.
-
-## clone
-```shell
-git clone git@github.com:metodribic/dlabs-test.git
-cd angular-testday-project
-```
-
-## npm
+## Development
 ```shell
 npm install
-```
-
-## gulp
-```shell
 gulp
 ```
-
-Browser sync will open a new tab with address: `http://localhost:9000`
